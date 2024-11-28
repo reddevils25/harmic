@@ -10,11 +10,11 @@ using harmic.Models;
 namespace harmic.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TbMenusController : Controller
+    public class tbMenusController : Controller
     {
         private readonly HarmicContext _context;
 
-        public TbMenusController(HarmicContext context)
+        public tbMenusController(HarmicContext context)
         {
             _context = context;
         }
