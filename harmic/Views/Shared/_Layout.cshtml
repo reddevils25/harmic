@@ -27,7 +27,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="~/css/style.css">
-
+    <link href="~/toastr/toastr.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -101,9 +101,12 @@
                                 <div class="header-right">
                                     <ul>
                                         <li class="dropdown d-none d-md-block">
-                                            <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="pe-7s-users"></i>
-                                            </button>
+                                            <form asp-area="Admin" asp-controller="Products" asp-action="Create" method="post">
+                                                <button class="btn btn-link dropdown-toggle ht-btn p-0" type="button" id="settingButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="pe-7s-users"></i>
+                                                </button>
+                                            </form>
+
                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
                                                 <li><a class="dropdown-item" href="login-register.html">Login | Register</a></li>
@@ -673,10 +676,10 @@
     <script src="~/js/plugins/jquery.nice-select.js"></script>
     <script src="~/js/plugins/parallax.min.js"></script>
     <script src="~/js/plugins/jquery.magnific-popup.min.js"></script>
-
     <!--Main JS (Common Activation Codes)-->
     <script src="~/js/main.js"></script>
-
+    <script src="~/toastr/toastr.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
