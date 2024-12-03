@@ -10,8 +10,6 @@ public partial class TbBlogComment
     public string? Name { get; set; }
 
     public string? Phone { get; set; }
-    public string? Image { get; set; }
-
 
     public string? Email { get; set; }
 
@@ -20,7 +18,10 @@ public partial class TbBlogComment
     public int? BlogId { get; set; }
 
     public bool? IsActive { get; set; }
-    public string Detail { get; set; }
+
+    public string? Detail { get; set; }
+
+    public string? Image { get; set; }
 
     public virtual TbBlog? Blog { get; set; }
 }

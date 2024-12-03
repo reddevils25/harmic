@@ -43,12 +43,11 @@ public partial class HarmicContext : DbContext
 
     public virtual DbSet<TbRole> TbRoles { get; set; }
 
-   
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TbAccount>(entity =>
         {
-            entity.HasKey(e => e.AccountId).HasName("PK__tb_Accou__349DA5A605D5035E");
+            entity.HasKey(e => e.AccountId).HasName("PK__tb_Accou__349DA5A6783FAB7A");
 
             entity.ToTable("tb_Account");
 
@@ -62,12 +61,12 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Role).WithMany(p => p.TbAccounts)
                 .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK__tb_Accoun__RoleI__24927208");
+                .HasConstraintName("FK__tb_Accoun__RoleI__4AB81AF0");
         });
 
         modelBuilder.Entity<TbBlog>(entity =>
         {
-            entity.HasKey(e => e.BlogId).HasName("PK__tb_Blog__54379E30261A4F9D");
+            entity.HasKey(e => e.BlogId).HasName("PK__tb_Blog__54379E307EA62748");
 
             entity.ToTable("tb_Blog");
 
@@ -85,36 +84,35 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Account).WithMany(p => p.TbBlogs)
                 .HasForeignKey(d => d.AccountId)
-                .HasConstraintName("FK__tb_Blog__Account__2C3393D0");
+                .HasConstraintName("FK__tb_Blog__Account__52593CB8");
 
             entity.HasOne(d => d.Category).WithMany(p => p.TbBlogs)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__tb_Blog__Categor__2B3F6F97");
+                .HasConstraintName("FK__tb_Blog__Categor__5165187F");
         });
 
         modelBuilder.Entity<TbBlogComment>(entity =>
         {
-            entity.HasKey(e => e.CommentId).HasName("PK__tb_BlogC__C3B4DFCA73ACC313");
+            entity.HasKey(e => e.CommentId).HasName("PK__tb_BlogC__C3B4DFCA053F3303");
 
             entity.ToTable("tb_BlogComment");
 
             entity.Property(e => e.CommentId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
-            entity.Property(e => e.Email).HasMaxLength(255);
-            entity.Property(e => e.Name).HasMaxLength(255);
-            entity.Property(e => e.Image).HasMaxLength(255);
-
-            entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.Detail).HasMaxLength(1000);
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Phone).HasMaxLength(20);
 
             entity.HasOne(d => d.Blog).WithMany(p => p.TbBlogComments)
                 .HasForeignKey(d => d.BlogId)
-                .HasConstraintName("FK__tb_BlogCo__BlogI__31EC6D26");
+                .HasConstraintName("FK__tb_BlogCo__BlogI__5812160E");
         });
 
         modelBuilder.Entity<TbCategory>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__tb_Categ__19093A0B91F6E7A9");
+            entity.HasKey(e => e.CategoryId).HasName("PK__tb_Categ__19093A0BF2154F8B");
 
             entity.ToTable("tb_Category");
 
@@ -133,7 +131,7 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbContact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__tb_Conta__5C66259BFB398C48");
+            entity.HasKey(e => e.ContactId).HasName("PK__tb_Conta__5C66259B3F5538D1");
 
             entity.ToTable("tb_Contact");
 
@@ -149,7 +147,7 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbMenu>(entity =>
         {
-            entity.HasKey(e => e.MenuId).HasName("PK__tb_Menu__C99ED23027AB2CB3");
+            entity.HasKey(e => e.MenuId).HasName("PK__tb_Menu__C99ED230BDA50947");
 
             entity.ToTable("tb_Menu");
 
@@ -164,7 +162,7 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbNews>(entity =>
         {
-            entity.HasKey(e => e.NewsId).HasName("PK__tb_News__954EBDF30C7D3AFE");
+            entity.HasKey(e => e.NewsId).HasName("PK__tb_News__954EBDF3B5E9ABEC");
 
             entity.ToTable("tb_News");
 
@@ -182,12 +180,12 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.TbNews)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__tb_News__Categor__2F10007B");
+                .HasConstraintName("FK__tb_News__Categor__5535A963");
         });
 
         modelBuilder.Entity<TbOrder>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__tb_Order__C3905BCF06DB472E");
+            entity.HasKey(e => e.OrderId).HasName("PK__tb_Order__C3905BCF9B2F7626");
 
             entity.ToTable("tb_Order");
 
@@ -203,12 +201,12 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.OrderStatus).WithMany(p => p.TbOrders)
                 .HasForeignKey(d => d.OrderStatusId)
-                .HasConstraintName("FK__tb_Order__OrderS__1B0907CE");
+                .HasConstraintName("FK__tb_Order__OrderS__412EB0B6");
         });
 
         modelBuilder.Entity<TbOrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__tb_Order__D3B9D36CE3F22567");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__tb_Order__D3B9D36C80A63A48");
 
             entity.ToTable("tb_OrderDetail");
 
@@ -217,12 +215,12 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.TbOrderDetails)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__tb_OrderD__Order__1DE57479");
+                .HasConstraintName("FK__tb_OrderD__Order__440B1D61");
         });
 
         modelBuilder.Entity<TbOrderStatus>(entity =>
         {
-            entity.HasKey(e => e.OrderStatusId).HasName("PK__tb_Order__BC674CA11E31E741");
+            entity.HasKey(e => e.OrderStatusId).HasName("PK__tb_Order__BC674CA14AA4CF30");
 
             entity.ToTable("tb_OrderStatus");
 
@@ -232,7 +230,7 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbProduct>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__tb_Produ__B40CC6CD8D20193B");
+            entity.HasKey(e => e.ProductId).HasName("PK__tb_Produ__B40CC6CD0C137164");
 
             entity.ToTable("tb_Product");
 
@@ -243,18 +241,16 @@ public partial class HarmicContext : DbContext
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.ModifiedBy).HasMaxLength(255);
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
-            entity.Property(e => e.PriceSale).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.Title).HasMaxLength(255);
 
             entity.HasOne(d => d.CategoryProduct).WithMany(p => p.TbProducts)
                 .HasForeignKey(d => d.CategoryProductId)
-                .HasConstraintName("FK__tb_Produc__Categ__1273C1CD");
+                .HasConstraintName("FK__tb_Product__Star__398D8EEE");
         });
 
         modelBuilder.Entity<TbProductCategory>(entity =>
         {
-            entity.HasKey(e => e.CategoryProductId).HasName("PK__tb_Produ__FAFA184FF3DF3405");
+            entity.HasKey(e => e.CategoryProductId).HasName("PK__tb_Produ__FAFA184F9BAA3D2B");
 
             entity.ToTable("tb_ProductCategory");
 
@@ -270,24 +266,25 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbProductReview>(entity =>
         {
-            entity.HasKey(e => e.ProductReviewId).HasName("PK__tb_Produ__3963188010289E87");
+            entity.HasKey(e => e.ProductReviewId).HasName("PK__tb_Produ__3963188048850B0A");
 
             entity.ToTable("tb_ProductReview");
 
             entity.Property(e => e.ProductReviewId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.Phone).HasMaxLength(20);
-            entity.Property(e => e.Image).HasMaxLength(255);
+
             entity.HasOne(d => d.Product).WithMany(p => p.TbProductReviews)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__tb_Produc__Produ__182C9B23");
+                .HasConstraintName("FK__tb_Produc__Produ__3E52440B");
         });
 
         modelBuilder.Entity<TbRole>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__tb_Role__8AFACE1AD1B0072C");
+            entity.HasKey(e => e.RoleId).HasName("PK__tb_Role__8AFACE1A9FA290A4");
 
             entity.ToTable("tb_Role");
 

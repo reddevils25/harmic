@@ -7,9 +7,9 @@ public partial class TbProduct
 {
     public int ProductId { get; set; }
 
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
-    public string Alias { get; set; }
+    public string? Alias { get; set; }
 
     public int? CategoryProductId { get; set; }
 
@@ -19,7 +19,7 @@ public partial class TbProduct
 
     public string? Image { get; set; }
 
-    public int Price { get; set; }
+    public int? Price { get; set; }
 
     public bool? IsSale { get; set; }
 
@@ -39,9 +39,10 @@ public partial class TbProduct
 
     public bool IsActive { get; set; }
 
-    public bool InStock { get; set; }
+    public bool? InStock { get; set; }
 
     public int? Star { get; set; }
+
     public int PriceSale { get; set; }
 
     public virtual TbProductCategory? CategoryProduct { get; set; }
