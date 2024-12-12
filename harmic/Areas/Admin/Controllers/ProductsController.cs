@@ -59,6 +59,13 @@ namespace harmic.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,Title,Alias,CategoryProductId,Description,Detail,Image,Price,IsSale,Quantity,CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsNew,IsBestSeller,IsActive,InStock,Star,PriceSale")] TbProduct tbProduct)
         {
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage); // Log ra lỗi
+                }
+            }
             if (ModelState.IsValid)
             {
                 tbProduct.Alias = harmic.Utilities.Function.TitleSlugenerationAlias(tbProduct.Title);

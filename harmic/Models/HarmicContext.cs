@@ -43,6 +43,7 @@ public partial class HarmicContext : DbContext
 
     public virtual DbSet<TbRole> TbRoles { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TbAccount>(entity =>
@@ -93,11 +94,10 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbBlogComment>(entity =>
         {
-            entity.HasKey(e => e.CommentId).HasName("PK__tb_BlogC__C3B4DFCA053F3303");
+            entity.HasKey(e => e.CommentId).HasName("PK__tb_BlogC__C3B4DFCA7A6C494C");
 
             entity.ToTable("tb_BlogComment");
 
-            entity.Property(e => e.CommentId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Detail).HasMaxLength(1000);
             entity.Property(e => e.Email).HasMaxLength(255);
@@ -107,7 +107,7 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Blog).WithMany(p => p.TbBlogComments)
                 .HasForeignKey(d => d.BlogId)
-                .HasConstraintName("FK__tb_BlogCo__BlogI__5812160E");
+                .HasConstraintName("FK__tb_BlogCo__BlogI__72C60C4A");
         });
 
         modelBuilder.Entity<TbCategory>(entity =>
@@ -131,11 +131,10 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbContact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__tb_Conta__5C66259B3F5538D1");
+            entity.HasKey(e => e.ContactId).HasName("PK__tb_Conta__5C66259B5E48DF9C");
 
             entity.ToTable("tb_Contact");
 
-            entity.Property(e => e.ContactId).ValueGeneratedNever();
             entity.Property(e => e.CreatedBy).HasMaxLength(255);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(255);
@@ -266,11 +265,10 @@ public partial class HarmicContext : DbContext
 
         modelBuilder.Entity<TbProductReview>(entity =>
         {
-            entity.HasKey(e => e.ProductReviewId).HasName("PK__tb_Produ__3963188048850B0A");
+            entity.HasKey(e => e.ProductReviewId).HasName("PK__tb_Produ__396318806D537644");
 
             entity.ToTable("tb_ProductReview");
 
-            entity.Property(e => e.ProductReviewId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Image).HasMaxLength(255);
@@ -279,7 +277,7 @@ public partial class HarmicContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.TbProductReviews)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__tb_Produc__Produ__3E52440B");
+                .HasConstraintName("FK__tb_Produc__Produ__6FE99F9F");
         });
 
         modelBuilder.Entity<TbRole>(entity =>

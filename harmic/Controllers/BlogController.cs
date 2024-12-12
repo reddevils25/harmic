@@ -35,6 +35,28 @@ namespace harmic.Controllers
             ViewBag.blogComment = _context.TbBlogComments.Where(i => i.BlogId == id).ToList();
             return View(blog);
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(string name, string phone, string email, string message)
+        {
+            try
+            {
+                TbBlogComment contact = new TbBlogComment();
+                contact.Name = name;
+                contact.Phone = phone;
+                contact.Email = email;
+                contact.Detail = message;
+                contact.CreatedDate = DateTime.Now;
+                _context.Add(contact);
+                await _context.SaveChangesAsync(); 
+
+                return Json(new { status = true });
+            }
+            catch
+            {
+                return Json(new { status = false });
+            }
+        }
+
 
     }
 }

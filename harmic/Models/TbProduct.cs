@@ -43,7 +43,7 @@ public partial class TbProduct
 
     public int? Star { get; set; }
 
-    public int PriceSale { get; set; }
+    public int? PriceSale { get; set; }
 
     public virtual TbProductCategory? CategoryProduct { get; set; }
 
